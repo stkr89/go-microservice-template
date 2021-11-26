@@ -10,10 +10,7 @@ import (
 )
 
 type gRPCServer struct {
-	add      gt.Handler
-	subtract gt.Handler
-	multiply gt.Handler
-	divide   gt.Handler
+	add gt.Handler
 }
 
 // NewGRPCServer initializes a new gRPC server
