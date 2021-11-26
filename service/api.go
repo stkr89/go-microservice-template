@@ -6,22 +6,22 @@ import (
 	"github.com/go-kit/kit/log"
 )
 
-type service struct {
-	logger log.Logger
-}
-
-// Service interface
-type Service interface {
+// MathService interface
+type MathService interface {
 	Add(ctx context.Context, numA, numB float32) (float32, error)
 }
 
-// NewService func initializes a service
-func NewService(logger log.Logger) Service {
-	return &service{
+type mathService struct {
+	logger log.Logger
+}
+
+// NewService func initializes a mathService
+func NewService(logger log.Logger) MathService {
+	return &mathService{
 		logger: logger,
 	}
 }
 
-func (s service) Add(ctx context.Context, numA, numB float32) (float32, error) {
+func (s mathService) Add(ctx context.Context, numA, numB float32) (float32, error) {
 	return numA + numB, nil
 }

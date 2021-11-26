@@ -24,13 +24,13 @@ type MathResp struct {
 }
 
 // MakeEndpoints func initializes the Endpoint instances
-func MakeEndpoints(s service.Service) Endpoints {
+func MakeEndpoints(s service.MathService) Endpoints {
 	return Endpoints{
 		Add: makeAddEndpoint(s),
 	}
 }
 
-func makeAddEndpoint(s service.Service) endpoint.Endpoint {
+func makeAddEndpoint(s service.MathService) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (response interface{}, err error) {
 		req := request.(MathReq)
 		result, _ := s.Add(ctx, req.NumA, req.NumB)
