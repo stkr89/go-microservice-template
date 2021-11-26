@@ -12,13 +12,15 @@ type MathService interface {
 }
 
 type mathService struct {
-	logger log.Logger
+	logger  log.Logger
+	mathDao MathDao
 }
 
 // NewService func initializes a mathService
-func NewService(logger log.Logger) MathService {
+func NewService(logger log.Logger, mathDao MathDao) MathService {
 	return &mathService{
-		logger: logger,
+		logger:  logger,
+		mathDao: mathDao,
 	}
 }
 

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/shopr-org/grpc-service-template/config"
 	"net"
 	"os"
 	"os/signal"
@@ -9,6 +10,7 @@ import (
 
 	"github.com/go-kit/kit/log"
 	"github.com/go-kit/kit/log/level"
+	"github.com/joho/godotenv"
 	"github.com/shopr-org/grpc-service-template/endpoints"
 	"github.com/shopr-org/grpc-service-template/pb"
 	"github.com/shopr-org/grpc-service-template/service"
@@ -17,12 +19,18 @@ import (
 )
 
 func main() {
+
 	var logger log.Logger
 	logger = log.NewJSONLogger(os.Stdout)
 	logger = log.With(logger, "ts", log.DefaultTimestampUTC)
 	logger = log.With(logger, "caller", log.DefaultCaller)
 
-	addservice := service.NewService(logger)
+	err := godotenv.Load()
+	if err != nil {
+		logger.Log("message", ".env file not found", "err", err)
+	}
+
+	addservice := service.NewService(logger, service.ProviderMathDao(config.ProviderDB()))
 	addendpoint := endpoints.MakeEndpoints(addservice)
 	grpcServer := transport.NewGRPCServer(addendpoint, logger)
 
