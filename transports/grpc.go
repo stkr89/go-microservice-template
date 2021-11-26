@@ -5,8 +5,8 @@ import (
 
 	"github.com/go-kit/kit/log"
 	gt "github.com/go-kit/kit/transport/grpc"
-	"github.com/junereycasuga/gokit-grpc-demo/endpoints"
-	"github.com/junereycasuga/gokit-grpc-demo/pb"
+	"github.com/shopr-org/grpc-service-template/endpoints"
+	"github.com/shopr-org/grpc-service-template/pb"
 )
 
 type gRPCServer struct {
