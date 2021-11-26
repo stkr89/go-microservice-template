@@ -24,50 +24,11 @@ func NewGRPCServer(endpoints endpoints.Endpoints, logger log.Logger) pb.MathServ
 			decodeMathRequest,
 			encodeMathResponse,
 		),
-		subtract: gt.NewServer(
-			endpoints.Subtract,
-			decodeMathRequest,
-			encodeMathResponse,
-		),
-		multiply: gt.NewServer(
-			endpoints.Multiply,
-			decodeMathRequest,
-			encodeMathResponse,
-		),
-		divide: gt.NewServer(
-			endpoints.Divide,
-			decodeMathRequest,
-			encodeMathResponse,
-		),
 	}
 }
 
 func (s *gRPCServer) Add(ctx context.Context, req *pb.MathRequest) (*pb.MathResponse, error) {
 	_, resp, err := s.add.ServeGRPC(ctx, req)
-	if err != nil {
-		return nil, err
-	}
-	return resp.(*pb.MathResponse), nil
-}
-
-func (s *gRPCServer) Subtract(ctx context.Context, req *pb.MathRequest) (*pb.MathResponse, error) {
-	_, resp, err := s.subtract.ServeGRPC(ctx, req)
-	if err != nil {
-		return nil, err
-	}
-	return resp.(*pb.MathResponse), nil
-}
-
-func (s *gRPCServer) Multiply(ctx context.Context, req *pb.MathRequest) (*pb.MathResponse, error) {
-	_, resp, err := s.multiply.ServeGRPC(ctx, req)
-	if err != nil {
-		return nil, err
-	}
-	return resp.(*pb.MathResponse), nil
-}
-
-func (s *gRPCServer) Divide(ctx context.Context, req *pb.MathRequest) (*pb.MathResponse, error) {
-	_, resp, err := s.divide.ServeGRPC(ctx, req)
 	if err != nil {
 		return nil, err
 	}
