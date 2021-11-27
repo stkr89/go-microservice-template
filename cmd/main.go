@@ -8,31 +8,30 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/go-kit/kit/log"
 	"github.com/go-kit/kit/log/level"
 	"github.com/joho/godotenv"
 	"github.com/shopr-org/grpc-service-template/endpoints"
 	"github.com/shopr-org/grpc-service-template/pb"
-	"github.com/shopr-org/grpc-service-template/service"
 	transport "github.com/shopr-org/grpc-service-template/transports"
 	"google.golang.org/grpc"
 )
 
 func main() {
-
-	var logger log.Logger
-	logger = log.NewJSONLogger(os.Stdout)
-	logger = log.With(logger, "ts", log.DefaultTimestampUTC)
-	logger = log.With(logger, "caller", log.DefaultCaller)
+	logger := initLogger()
 
 	err := godotenv.Load()
 	if err != nil {
 		logger.Log("message", ".env file not found", "err", err)
 	}
 
-	addservice := service.NewService(logger, service.ProviderMathDao(config.ProviderDB()))
+	addservice := initAddService()
 	addendpoint := endpoints.MakeEndpoints(addservice)
 	grpcServer := transport.NewGRPCServer(addendpoint, logger)
+
+	err = config.InitialDBMigration(config.ProvideDB())
+	if err != nil {
+		panic(err)
+	}
 
 	errs := make(chan error)
 	go func() {

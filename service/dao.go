@@ -10,7 +10,7 @@ type MathDaoImpl struct {
 	db gorm.DB
 }
 
-func ProviderMathDao(db gorm.DB) MathDaoImpl {
+func ProviderMathDaoImpl(db gorm.DB) MathDaoImpl {
 	return MathDaoImpl{
 		db: db,
 	}
