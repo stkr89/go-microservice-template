@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/shopr-org/grpc-service-template/common"
 	"github.com/shopr-org/grpc-service-template/config"
+	"github.com/shopr-org/grpc-service-template/service"
 	"net"
 	"os"
 	"os/signal"
@@ -17,18 +19,17 @@ import (
 )
 
 func main() {
-	logger := initLogger()
+	logger := common.NewLogger()
 
 	err := godotenv.Load()
 	if err != nil {
 		logger.Log("message", ".env file not found", "err", err)
 	}
 
-	addservice := initAddService()
-	addendpoint := endpoints.MakeEndpoints(addservice)
-	grpcServer := transport.NewGRPCServer(addendpoint, logger)
+	endpoint := endpoints.MakeEndpoints(service.NewMathServiceImpl())
+	grpcServer := transport.NewGRPCServer(endpoint, logger)
 
-	err = config.InitialDBMigration(config.ProvideDB())
+	err = config.InitialDBMigration(config.NewDB())
 	if err != nil {
 		panic(err)
 	}
