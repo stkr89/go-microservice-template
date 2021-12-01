@@ -3,13 +3,14 @@ package service
 import (
 	"context"
 	"github.com/shopr-org/grpc-service-template/common"
+	"github.com/shopr-org/grpc-service-template/pb"
 
 	"github.com/go-kit/kit/log"
 )
 
 // MathService interface
 type MathService interface {
-	Add(ctx context.Context, numA, numB float32) (float32, error)
+	Add(ctx context.Context, request *pb.MathRequest) (*pb.MathResponse, error)
 }
 
 type MathServiceImpl struct {
@@ -31,6 +32,6 @@ func NewMathServiceImplArgs(logger log.Logger, mathDao MathDao) MathService {
 	}
 }
 
-func (s MathServiceImpl) Add(ctx context.Context, numA, numB float32) (float32, error) {
-	return numA + numB, nil
+func (s MathServiceImpl) Add(ctx context.Context, request *pb.MathRequest) (*pb.MathResponse, error) {
+	return nil, nil
 }

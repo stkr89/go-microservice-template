@@ -18,8 +18,8 @@ func NewGRPCServer(endpoints endpoints.Endpoints, logger log.Logger) pb.MathServ
 	return &gRPCServer{
 		add: gt.NewServer(
 			endpoints.Add,
-			decodeMathRequest,
-			encodeMathResponse,
+			decodeGRPCRequest,
+			encodeGRPCResponse,
 		),
 	}
 }
@@ -32,12 +32,10 @@ func (s *gRPCServer) Add(ctx context.Context, req *pb.MathRequest) (*pb.MathResp
 	return resp.(*pb.MathResponse), nil
 }
 
-func decodeMathRequest(_ context.Context, request interface{}) (interface{}, error) {
-	req := request.(*pb.MathRequest)
-	return endpoints.MathReq{NumA: req.NumA, NumB: req.NumB}, nil
+func decodeGRPCRequest(_ context.Context, req interface{}) (interface{}, error) {
+	return req, nil
 }
 
-func encodeMathResponse(_ context.Context, response interface{}) (interface{}, error) {
-	resp := response.(endpoints.MathResp)
-	return &pb.MathResponse{Result: resp.Result}, nil
+func encodeGRPCResponse(_ context.Context, resp interface{}) (interface{}, error) {
+	return resp, nil
 }
