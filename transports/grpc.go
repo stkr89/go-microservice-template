@@ -3,7 +3,6 @@ package transport
 import (
 	"context"
 
-	"github.com/go-kit/kit/log"
 	gt "github.com/go-kit/kit/transport/grpc"
 	"github.com/shopr-org/grpc-service-template/endpoints"
 	"github.com/shopr-org/grpc-service-template/pb"
@@ -14,7 +13,7 @@ type gRPCServer struct {
 }
 
 // NewGRPCServer initializes a new gRPC server
-func NewGRPCServer(endpoints endpoints.Endpoints, logger log.Logger) pb.MathServiceServer {
+func NewGRPCServer(endpoints endpoints.Endpoints) pb.MathServiceServer {
 	return &gRPCServer{
 		add: gt.NewServer(
 			endpoints.Add,
