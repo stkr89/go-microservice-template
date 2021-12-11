@@ -2,6 +2,10 @@ package transport
 
 import (
 	"context"
+	"encoding/json"
+	"github.com/go-kit/kit/endpoint"
+	"github.com/shopr-org/grpc-service-template/middleware"
+	"github.com/shopr-org/grpc-service-template/types"
 
 	gt "github.com/go-kit/kit/transport/grpc"
 	"github.com/shopr-org/grpc-service-template/endpoints"
@@ -16,9 +20,12 @@ type gRPCServer struct {
 func NewGRPCServer(endpoints endpoints.Endpoints) pb.MathServiceServer {
 	return &gRPCServer{
 		add: gt.NewServer(
-			endpoints.Add,
-			decodeGRPCRequest,
-			encodeGRPCResponse,
+			endpoint.Chain(
+				middleware.ValidateAddInput(),
+				middleware.ConformAddInput(),
+			)(endpoints.Add),
+			decodeAddGRPCRequest,
+			encodeAddGRPCResponse,
 		),
 	}
 }
@@ -31,10 +38,34 @@ func (s *gRPCServer) Add(ctx context.Context, req *pb.MathRequest) (*pb.MathResp
 	return resp.(*pb.MathResponse), nil
 }
 
-func decodeGRPCRequest(_ context.Context, req interface{}) (interface{}, error) {
-	return req, nil
+func decodeAddGRPCRequest(_ context.Context, request interface{}) (interface{}, error) {
+	reqpb := request.(*pb.MathRequest)
+	b, err := json.Marshal(reqpb)
+	if err != nil {
+		return nil, err
+	}
+
+	var req types.MathRequest
+	err = json.Unmarshal(b, &req)
+	if err != nil {
+		return nil, err
+	}
+
+	return &req, nil
 }
 
-func encodeGRPCResponse(_ context.Context, resp interface{}) (interface{}, error) {
-	return resp, nil
+func encodeAddGRPCResponse(_ context.Context, response interface{}) (interface{}, error) {
+	respb := response.(*types.MathResponse)
+	b, err := json.Marshal(respb)
+	if err != nil {
+		return nil, err
+	}
+
+	var reqsp pb.MathResponse
+	err = json.Unmarshal(b, &reqsp)
+	if err != nil {
+		return nil, err
+	}
+
+	return &reqsp, nil
 }

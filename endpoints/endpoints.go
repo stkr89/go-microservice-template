@@ -2,7 +2,7 @@ package endpoints
 
 import (
 	"context"
-	"github.com/shopr-org/grpc-service-template/pb"
+	"github.com/shopr-org/grpc-service-template/types"
 
 	"github.com/go-kit/kit/endpoint"
 	"github.com/shopr-org/grpc-service-template/service"
@@ -20,7 +20,7 @@ func MakeEndpoints(s service.MathService) Endpoints {
 
 func makeAddEndpoint(s service.MathService) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (response interface{}, err error) {
-		req := request.(*pb.MathRequest)
+		req := request.(*types.MathRequest)
 		return s.Add(ctx, req)
 	}
 }

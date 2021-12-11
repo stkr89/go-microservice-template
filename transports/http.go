@@ -7,7 +7,8 @@ import (
 	httptransport "github.com/go-kit/kit/transport/http"
 	"github.com/shopr-org/grpc-service-template/common"
 	"github.com/shopr-org/grpc-service-template/endpoints"
-	"github.com/shopr-org/grpc-service-template/pb"
+	"github.com/shopr-org/grpc-service-template/middleware"
+	"github.com/shopr-org/grpc-service-template/types"
 	"net/http"
 )
 
@@ -18,7 +19,10 @@ type errorWrapper struct {
 func NewHTTPHandler(endpoints endpoints.Endpoints) http.Handler {
 	m := http.NewServeMux()
 	m.Handle("/api/v1/register", httptransport.NewServer(
-		endpoints.Add,
+		endpoint.Chain(
+			middleware.ValidateAddInput(),
+			middleware.ConformAddInput(),
+		)(endpoints.Add),
 		decodeHTTPAddRequest,
 		encodeHTTPGenericResponse,
 	))
@@ -49,7 +53,7 @@ func encodeHTTPGenericResponse(ctx context.Context, w http.ResponseWriter, respo
 }
 
 func decodeHTTPAddRequest(_ context.Context, r *http.Request) (interface{}, error) {
-	var req pb.MathRequest
+	var req types.MathRequest
 	err := json.NewDecoder(r.Body).Decode(&req)
 	return &req, err
 }
