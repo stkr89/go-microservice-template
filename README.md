@@ -1,4 +1,4 @@
-# grpc-service-template
+# go-microservice-template
 
 ## Steps
 
