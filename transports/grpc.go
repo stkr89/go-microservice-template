@@ -61,11 +61,11 @@ func encodeAddGRPCResponse(_ context.Context, response interface{}) (interface{}
 		return nil, err
 	}
 
-	var reqsp pb.MathResponse
-	err = json.Unmarshal(b, &reqsp)
+	var resp pb.MathResponse
+	err = json.Unmarshal(b, &resp)
 	if err != nil {
 		return nil, err
 	}
 
-	return &reqsp, nil
+	return &resp, nil
 }
