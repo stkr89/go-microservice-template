@@ -30,7 +30,7 @@ func NewGRPCServer(endpoints endpoints.Endpoints) pb.MathServiceServer {
 	}
 }
 
-func (s *gRPCServer) Add(ctx context.Context, req *pb.MathRequest) (*pb.MathResponse, error) {
+func (s gRPCServer) Add(ctx context.Context, req *pb.MathRequest) (*pb.MathResponse, error) {
 	_, resp, err := s.add.ServeGRPC(ctx, req)
 	if err != nil {
 		return nil, err
