@@ -2,11 +2,11 @@ package test
 
 import (
 	"github.com/joho/godotenv"
-	"github.com/shopr-org/grpc-service-template/cmd/server"
-	"github.com/shopr-org/grpc-service-template/common"
-	"github.com/shopr-org/grpc-service-template/endpoints"
-	"github.com/shopr-org/grpc-service-template/service"
-	transport "github.com/shopr-org/grpc-service-template/transports"
+	"github.com/stkr89/mathsvc/cmd/server"
+	"github.com/stkr89/mathsvc/common"
+	"github.com/stkr89/mathsvc/endpoints"
+	"github.com/stkr89/mathsvc/service"
+	transport "github.com/stkr89/mathsvc/transports"
 	"github.com/stretchr/testify/suite"
 	"net/http"
 	"testing"

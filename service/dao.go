@@ -2,8 +2,8 @@ package service
 
 import (
 	"github.com/go-kit/log"
-	"github.com/shopr-org/grpc-service-template/common"
-	"github.com/shopr-org/grpc-service-template/config"
+	"github.com/stkr89/mathsvc/common"
+	"github.com/stkr89/mathsvc/config"
 	"gorm.io/gorm"
 )
 

@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 	"github.com/go-kit/kit/endpoint"
 	httptransport "github.com/go-kit/kit/transport/http"
-	"github.com/shopr-org/grpc-service-template/common"
-	"github.com/shopr-org/grpc-service-template/endpoints"
-	"github.com/shopr-org/grpc-service-template/middleware"
-	"github.com/shopr-org/grpc-service-template/types"
+	"github.com/stkr89/mathsvc/common"
+	"github.com/stkr89/mathsvc/endpoints"
+	"github.com/stkr89/mathsvc/middleware"
+	"github.com/stkr89/mathsvc/types"
 	"net/http"
 )
 

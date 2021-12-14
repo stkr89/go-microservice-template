@@ -1,4 +1,4 @@
-module github.com/shopr-org/grpc-service-template
+module github.com/stkr89/mathsvc
 
 go 1.16
 

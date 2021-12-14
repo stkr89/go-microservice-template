@@ -5,7 +5,7 @@ import (
 	"errors"
 	"github.com/go-kit/kit/endpoint"
 	"github.com/go-playground/validator/v10"
-	"github.com/shopr-org/grpc-service-template/types"
+	"github.com/stkr89/mathsvc/types"
 	"strings"
 )
 

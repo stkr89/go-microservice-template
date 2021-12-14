@@ -2,10 +2,10 @@ package endpoints
 
 import (
 	"context"
-	"github.com/shopr-org/grpc-service-template/types"
+	"github.com/stkr89/mathsvc/types"
 
 	"github.com/go-kit/kit/endpoint"
-	"github.com/shopr-org/grpc-service-template/service"
+	"github.com/stkr89/mathsvc/service"
 )
 
 type Endpoints struct {

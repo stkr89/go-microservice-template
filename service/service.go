@@ -2,8 +2,8 @@ package service
 
 import (
 	"context"
-	"github.com/shopr-org/grpc-service-template/common"
-	"github.com/shopr-org/grpc-service-template/types"
+	"github.com/stkr89/mathsvc/common"
+	"github.com/stkr89/mathsvc/types"
 
 	"github.com/go-kit/kit/log"
 )

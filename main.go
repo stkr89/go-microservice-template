@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/shopr-org/grpc-service-template/cmd/server"
+	"github.com/stkr89/mathsvc/cmd/server"
 )
 
 func main() {
