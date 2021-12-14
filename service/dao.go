@@ -1,6 +1,8 @@
 package service
 
 import (
+	"github.com/go-kit/log"
+	"github.com/shopr-org/grpc-service-template/common"
 	"github.com/shopr-org/grpc-service-template/config"
 	"gorm.io/gorm"
 )
@@ -10,12 +12,14 @@ type MathDao interface {
 }
 
 type MathDaoImpl struct {
-	db gorm.DB
+	logger log.Logger
+	db     gorm.DB
 }
 
 func NewMathDaoImpl() *MathDaoImpl {
 	return &MathDaoImpl{
-		db: config.NewDB(),
+		logger: common.NewLogger(),
+		db:     config.NewDB(),
 	}
 }
 
