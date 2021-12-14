@@ -1,2 +1,2 @@
 build:
-	docker build -t live-gig-registrationsvc:latest .
+	docker build -t live-gig-mathsvc:latest .
