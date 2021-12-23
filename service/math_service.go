@@ -1,7 +1,6 @@
 package service
 
 import (
-	"context"
 	"github.com/stkr89/mathsvc/common"
 	"github.com/stkr89/mathsvc/types"
 
@@ -10,7 +9,7 @@ import (
 
 // MathService interface
 type MathService interface {
-	Add(ctx context.Context, request *types.MathRequest) (*types.MathResponse, error)
+	Add(request *types.MathRequest) (*types.MathResponse, error)
 }
 
 type MathServiceImpl struct {
@@ -32,6 +31,6 @@ func NewMathServiceImplArgs(logger log.Logger, mathDao MathDao) MathService {
 	}
 }
 
-func (s MathServiceImpl) Add(ctx context.Context, request *types.MathRequest) (*types.MathResponse, error) {
+func (s MathServiceImpl) Add(request *types.MathRequest) (*types.MathResponse, error) {
 	return nil, nil
 }

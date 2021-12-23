@@ -21,6 +21,6 @@ func MakeEndpoints(s service.MathService) Endpoints {
 func makeAddEndpoint(s service.MathService) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (response interface{}, err error) {
 		req := request.(*types.MathRequest)
-		return s.Add(ctx, req)
+		return s.Add(req)
 	}
 }
