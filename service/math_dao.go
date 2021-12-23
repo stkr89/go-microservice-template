@@ -7,7 +7,7 @@ import (
 	"gorm.io/gorm"
 )
 
-//go:generate mockery --name=MathDao --output=../mock/
+//go:generate mocker --dst ../mock/math_dao_mock.go --pkg mock math_dao.go MathDao
 type MathDao interface {
 }
 
