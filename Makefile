@@ -1,2 +1,2 @@
 build:
-	docker build -t live-gig-mathsvc:latest .
+	docker build -t livegig-mathsvc:latest .
