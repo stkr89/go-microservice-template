@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"github.com/go-kit/kit/endpoint"
 	httptransport "github.com/go-kit/kit/transport/http"
+	"github.com/gorilla/mux"
 	"github.com/stkr89/mathsvc/common"
 	"github.com/stkr89/mathsvc/endpoints"
 	"github.com/stkr89/mathsvc/middleware"
@@ -17,15 +18,15 @@ type errorWrapper struct {
 }
 
 func NewHTTPHandler(endpoints endpoints.Endpoints) http.Handler {
-	m := http.NewServeMux()
-	m.Handle("/api/v1/register", httptransport.NewServer(
+	m := mux.NewRouter()
+	m.Handle("/api/v1/add", httptransport.NewServer(
 		endpoint.Chain(
 			middleware.ValidateAddInput(),
 			middleware.ConformAddInput(),
 		)(endpoints.Add),
 		decodeHTTPAddRequest,
 		encodeHTTPGenericResponse,
-	))
+	)).Methods(http.MethodPost)
 
 	return m
 }
