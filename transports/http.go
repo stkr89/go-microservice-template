@@ -19,7 +19,7 @@ type errorWrapper struct {
 
 func NewHTTPHandler(endpoints endpoints.Endpoints) http.Handler {
 	m := mux.NewRouter()
-	m.Handle("/api/v1/add", httptransport.NewServer(
+	m.Handle("/api/add/v1", httptransport.NewServer(
 		endpoint.Chain(
 			middleware.ValidateAddInput(),
 			middleware.ConformAddInput(),
