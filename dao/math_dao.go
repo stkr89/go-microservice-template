@@ -1,4 +1,4 @@
-package service
+package dao
 
 import (
 	"github.com/go-kit/log"

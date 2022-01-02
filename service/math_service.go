@@ -2,6 +2,7 @@ package service
 
 import (
 	"github.com/stkr89/mathsvc/common"
+	"github.com/stkr89/mathsvc/dao"
 	"github.com/stkr89/mathsvc/types"
 
 	"github.com/go-kit/kit/log"
@@ -14,17 +15,17 @@ type MathService interface {
 
 type MathServiceImpl struct {
 	logger  log.Logger
-	mathDao MathDao
+	mathDao dao.MathDao
 }
 
 func NewMathServiceImpl() *MathServiceImpl {
 	return &MathServiceImpl{
 		logger:  common.NewLogger(),
-		mathDao: NewMathDaoImpl(),
+		mathDao: dao.NewMathDaoImpl(),
 	}
 }
 
-func NewMathServiceImplArgs(logger log.Logger, mathDao MathDao) MathService {
+func NewMathServiceImplArgs(logger log.Logger, mathDao dao.MathDao) MathService {
 	return &MathServiceImpl{
 		logger:  logger,
 		mathDao: mathDao,
