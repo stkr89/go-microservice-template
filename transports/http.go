@@ -6,10 +6,10 @@ import (
 	"github.com/go-kit/kit/endpoint"
 	httptransport "github.com/go-kit/kit/transport/http"
 	"github.com/gorilla/mux"
-	"github.com/stkr89/mathsvc/common"
-	"github.com/stkr89/mathsvc/endpoints"
-	"github.com/stkr89/mathsvc/middleware"
-	"github.com/stkr89/mathsvc/types"
+	"github.com/stkr89/go-microservice-template/common"
+	"github.com/stkr89/go-microservice-template/endpoints"
+	"github.com/stkr89/go-microservice-template/middleware"
+	"github.com/stkr89/go-microservice-template/types"
 	"net/http"
 )
 

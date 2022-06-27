@@ -4,12 +4,12 @@ import (
 	"context"
 	"encoding/json"
 	"github.com/go-kit/kit/endpoint"
-	"github.com/stkr89/mathsvc/middleware"
-	"github.com/stkr89/mathsvc/types"
+	"github.com/stkr89/go-microservice-template/middleware"
+	"github.com/stkr89/go-microservice-template/types"
 
 	gt "github.com/go-kit/kit/transport/grpc"
-	"github.com/stkr89/mathsvc/endpoints"
-	"github.com/stkr89/mathsvc/pb"
+	"github.com/stkr89/go-microservice-template/endpoints"
+	"github.com/stkr89/go-microservice-template/pb"
 )
 
 type gRPCServer struct {

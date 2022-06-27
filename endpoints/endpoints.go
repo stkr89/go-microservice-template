@@ -2,10 +2,10 @@ package endpoints
 
 import (
 	"context"
-	"github.com/stkr89/mathsvc/types"
+	"github.com/stkr89/go-microservice-template/types"
 
 	"github.com/go-kit/kit/endpoint"
-	"github.com/stkr89/mathsvc/service"
+	"github.com/stkr89/go-microservice-template/service"
 )
 
 type Endpoints struct {

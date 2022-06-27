@@ -2,8 +2,8 @@ package dao
 
 import (
 	"github.com/go-kit/log"
-	"github.com/stkr89/mathsvc/common"
-	"github.com/stkr89/mathsvc/config"
+	"github.com/stkr89/go-microservice-template/common"
+	"github.com/stkr89/go-microservice-template/config"
 	"gorm.io/gorm"
 )
 

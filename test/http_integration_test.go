@@ -2,11 +2,11 @@ package test
 
 import (
 	"github.com/joho/godotenv"
-	"github.com/stkr89/mathsvc/cmd/server"
-	"github.com/stkr89/mathsvc/common"
-	"github.com/stkr89/mathsvc/endpoints"
-	"github.com/stkr89/mathsvc/service"
-	transport "github.com/stkr89/mathsvc/transports"
+	"github.com/stkr89/go-microservice-template/cmd/server"
+	"github.com/stkr89/go-microservice-template/common"
+	"github.com/stkr89/go-microservice-template/endpoints"
+	"github.com/stkr89/go-microservice-template/service"
+	transport "github.com/stkr89/go-microservice-template/transports"
 	"github.com/stretchr/testify/suite"
 	"net/http"
 	"testing"

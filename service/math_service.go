@@ -1,9 +1,9 @@
 package service
 
 import (
-	"github.com/stkr89/mathsvc/common"
-	"github.com/stkr89/mathsvc/dao"
-	"github.com/stkr89/mathsvc/types"
+	"github.com/stkr89/go-microservice-template/common"
+	"github.com/stkr89/go-microservice-template/dao"
+	"github.com/stkr89/go-microservice-template/types"
 
 	"github.com/go-kit/kit/log"
 )

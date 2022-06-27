@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/stkr89/mathsvc/cmd/server"
+	"github.com/stkr89/go-microservice-template/cmd/server"
 )
 
 func main() {

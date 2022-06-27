@@ -4,7 +4,7 @@ import (
 	"context"
 	"github.com/go-kit/kit/endpoint"
 	"github.com/leebenson/conform"
-	"github.com/stkr89/mathsvc/types"
+	"github.com/stkr89/go-microservice-template/types"
 )
 
 func ConformAddInput() endpoint.Middleware {
